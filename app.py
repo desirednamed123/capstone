@@ -1,13 +1,12 @@
 from flask import Flask, render_template, Response
 import cv2
 
-#req.flask tas cv2
-app = Flask(__name__)
-camera = cv2.VideoCapture(0) 
 
+app = Flask(__name__)
+camera = cv2.VideoCapture(0)#def
+camera2 = cv2.VideoCapture(1)#2nd cam
 # gen frames 
-def gen_frames():
-    
+def gen_frames(camera):
     while True:
         success,frames = camera.read()
         if not success:
@@ -23,10 +22,13 @@ def gen_frames():
 def index():
     return render_template('index.html')
 
+@app.route('/video2')
+def video2():
+    return Response(gen_frames(camera2), mimetype = "multipart/x-mixed-replace; boundary=frame")
 
 @app.route('/video')
 def video():
-    return Response(gen_frames(), mimetype = "multipart/x-mixed-replace; boundary=frame")
+    return Response(gen_frames(camera), mimetype = "multipart/x-mixed-replace; boundary=frame")
 
 
 if __name__ == "__main__":
