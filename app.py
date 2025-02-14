@@ -2,8 +2,6 @@ import dlib
 from flask import Flask, render_template, Response
 import cv2
 
-#kent
-
 app = Flask(__name__)
 camera = cv2.VideoCapture(0)#def
 camera2 = cv2.VideoCapture(1)#2nd cam
