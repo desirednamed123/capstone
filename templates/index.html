@@ -33,15 +33,19 @@
         }
         .maximize-btn {
             position: absolute;
-            bottom: 20px; /* Adjusted position */
-            right: 20px; /* Adjusted position */
-            background-color: rgba(0, 0, 0, 0.5);
+            bottom: 20px; 
+            right: 20px; 
+            background-color: rgba(211, 211, 211,0.5);  /*color change*/
             color: white;
             border: none;
-            padding: 10px 15px; /* Slightly larger for better visibility */
+            padding: 5px 10px; 
             cursor: pointer;
-            font-size: 14px;
+            font-size: 18px;
             border-radius: 5px;
+        }
+
+        .maximize-btn:hover{
+            background-color: rgba(211, 211, 211,0.9);/*Hovering*/
         }
     </style>
 </head>
@@ -50,15 +54,15 @@
     <h1>Intrudoor</h1>
     <div class="cam_container">
         <div class="image-container">
-            <h2>Cam2</h2>
+            <h2>Cam1</h2>
             <img id="video1" src="{{ url_for('video') }}" alt="Cam1">
-            <button class="maximize-btn" onclick="maximizeImage('video1')">T</button>
+            <button class="maximize-btn" onclick="maximizeImage('video1')">⛶</button>
         </div>
         
         <div class="image-container">
             <h2>Cam2</h2>
             <img id="video2" src="{{ url_for('video2') }}" alt="Cam2">
-            <button class="maximize-btn" onclick="maximizeImage('video2')">T</button>
+            <button class="maximize-btn" onclick="maximizeImage('video2')">⛶</button>
         </div>
     </div>
     
