@@ -1,22 +1,25 @@
-import dlib
 from flask import Flask, render_template, Response
+import face_recognition
 import cv2
-
+import os
+import time
+import numpy as np
+#  /* css */
 app = Flask(__name__)
 camera = cv2.VideoCapture(0)#def
 camera2 = cv2.VideoCapture(1)#2nd cam
-# gen frames 
+
+
 def gen_frames(camera):
     while True:
-        success,frames = camera.read()
+        success, frames = camera.read()
         if not success:
             break
         else:
             ret,buffer = cv2.imencode(".jpg", frames)
             frames = buffer.tobytes()
+        yield (b'--frame\r\n' b'Content-Type: image/jpeg\r\n\r\n' + buffer.tobytes() + b'\r\n')
 
-        yield(b'--frame\r\n' b'Content-Type: image/jpeg\r\n\r\n' + 
-			frames + b'\r\n')
 
 @app.route('/')
 def index():
