@@ -4,53 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Intrudoor</title>
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-        }
-
-        .cam_container {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .image-container {
-            position: relative;
-            display: inline-block;
-        }
-        h2{
-            text-align: center;
-        }
-        img {
-            width: 100%;
-            max-width: 640px;
-            height: 100%;
-            max-height: 480px;
-        }
-        .maximize-btn {
-            position: absolute;
-            bottom: 20px; 
-            right: 20px; 
-            background-color: rgba(211, 211, 211,0.5);  /*color change*/
-            color: white;
-            border: none;
-            padding: 5px 10px; 
-            cursor: pointer;
-            font-size: 18px;
-            border-radius: 5px;
-        }
-
-        .maximize-btn:hover{
-            background-color: rgba(211, 211, 211,0.9);/*Hovering*/
-        }
-    </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
 </head>
 <body>
-    <!-- kent -->
     <h1>Intrudoor</h1>
     <div class="cam_container">
         <div class="image-container">
@@ -58,44 +14,29 @@
             <img id="video1" src="{{ url_for('video') }}" alt="Cam1">
             <button class="maximize-btn" onclick="maximizeImage('video1')">⛶</button>
         </div>
-        
+            
         <div class="image-container">
             <h2>Cam2</h2>
             <img id="video2" src="{{ url_for('video2') }}" alt="Cam2">
             <button class="maximize-btn" onclick="maximizeImage('video2')">⛶</button>
         </div>
     </div>
-    
-    <script>
-      function maximizeImage(id) {
-        let img = document.getElementById(id);
-        let isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || 
-                    (navigator.userAgentData && navigator.userAgentData.platform === "iOS");
-        if (isIOS) {
-            alert("Fullscreen mode is not supported on iOS. Please rotate your device for a better view.");
-            return;
-        }
 
-
-        if (img.requestFullscreen) {
-            img.requestFullscreen().then(() => {
-                if (screen.orientation && screen.orientation.lock) {
-                    screen.orientation.lock("landscape").catch((err) => {
-                        console.warn("Screen rotation not allowed:", err);
-                    });
-                }
-            }).catch(err => console.warn("Fullscreen request failed:", err));
-        } else if (img.mozRequestFullScreen) { 
-            img.mozRequestFullScreen();
-        } else if (img.webkitRequestFullscreen) { 
-            img.webkitRequestFullscreen();
-        } else if (img.msRequestFullscreen) { 
-            img.msRequestFullscreen();
-        } else {
-            alert("Fullscreen mode is not supported on your device.");
-        }
-    }
-
-    </script>
+    <div class="down_container">
+        <div class="sensor_container">
+            <div class="sensors">
+                <h6 id="sen1">Sen 1</h6>
+                <h6 id="sen2">Sen 2</h6>
+                <h6 id="sen3">Sen 3</h6>
+            </div>
+            <div id="logbox" class="logbox">Log box</div>          
+        </div>
+        <div class="fingerprint_container">
+            <div class="indicator_1"></div>
+            <div class="indicator_2"></div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='index.js') }}"></script>
 </body>
 </html>
+/* css */
