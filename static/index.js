@@ -24,4 +24,5 @@ function maximizeImage(id) {
         alert("Fullscreen mode is not supported on your device.");
     }
 }
- /* css */
+
+  /* juls */
