@@ -3,6 +3,9 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+
+   
  /* css */
 body {
     display: flex;
@@ -36,6 +39,7 @@ img {
     max-width: 940px;
     height: 100%;
     max-height: 480px;  
+    border-radius: 10px;
 }
 
 .maximize-btn {
@@ -60,33 +64,67 @@ img {
     padding: 10px;
     max-width: 940px;
     height: 480px;
-    background-color: green;
     gap: 20px;
+  
 }
 
-.sensors {
-    width: 100%;
-    max-width: 135px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.sensors h6 {
+.sen1 {
     width: 100%; 
+    max-width: 624px;
     font-size: 14px;
-    height: 50px;
-    background-color: red;
-    align-items: center;    
+    height: 120px;
+    font-size: clamp(1.5rem, -0.1406rem + 5.25vw, 2.8125rem);
+    background-color:  #F0F0F0;    
     text-align: center;
+    display: flex;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.no-object {
+    width: 100%; 
+    max-width: 624px;
+    font-size: clamp(1.5rem, -0.1406rem + 5.25vw, 2.8125rem);
+    font-weight: bold;
+    height: 120px;
+    background-color: green;   
+    text-align: center;
+    display: flex;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    justify-content: center;
+    align-items: center;
+}
+/* juls */
+.object-near {
+    width: 100%; 
+    max-width: 624px;
+    font-size: clamp(1.5rem, -0.1406rem + 5.25vw, 2.8125rem);
+    height: 120px;
+    font-weight: bold;
+    background-color: red;    
+    text-align: center;
+    display: flex;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    justify-content: center;
+    align-items: center;
 }
 
 .logbox {
     width: 100%;
     max-width: 625px;
-    height: 350px;
-    background-color: white;
+    height: 200px;
+    font-size: clamp(1.5rem, -0.1406rem + 5.25vw, 2.8125rem);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #F0F0F0;
+    border-radius: 5px;
     padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 /* fingerprint_container */
 .fingerprint_container {
@@ -95,27 +133,96 @@ img {
     width: 100%;
     max-width: 940px;
     height: 480px;
-    gap: 40px;
-    background-color: red;      
+    gap: 15px;   
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.fingerprint_container .indicator_1{
-    width: 100%;
-    max-width: 700px;
-    height: 200px;
-    background-color: yellow;
+.data-box {
+    width: 300px;
+    font-size: 32px;
+    margin: 20px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    border-radius: 5px;
+    text-align: center;
 }
 
-.fingerprint_container .indicator_2{
+.indicator_1 {
+    font-size: 32px;
+    width: 100%;
+    max-width: 400px;
+    background-color: yellow;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.orange {
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: orange;
+    color: black;
+    text-align: center;
+}
+
+.green{
+    width: 100%;
+    max-width: 400px;
+    background-color: green;
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.red{
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: red;
+    color: white;
+    text-align: center;
+}
+
+.fingerprint_container input{
+    width: 100%;
+    border-radius: 5px;
+    max-width: 300px;
+    font-size: clamp(0.875rem, 0.0938rem + 2.5vw, 1.5rem);
+    background-color: #F0F0F0;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    height: 35px;
+    border: none;
+    outline: none;
+}
+
+.fingerprint_container button{
+    padding: 5px;
+    height: 35px;
+    font-size: 18px;
+    width: 100%;
+    max-width: 80px;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+}
+
+.fingerprint_container button:hover{
+    background-color: gray;
+}
+
+/* .fingerprint_container .indicator_2{
     max-width: 500px;
     width: 100%;
-    height: 100px;
+    height: 190px;
     background-color: blue;
-}
+} */
 
 /* Break points */
 /* Extra small devices (phones, 0px and up) */
@@ -136,7 +243,7 @@ img {
 
 /* Medium devices (tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
-    .cam_container, .down_container, .sensor_container {
+    .cam_container, .down_container {
         flex-direction: row;
     }
   

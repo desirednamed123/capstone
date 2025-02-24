@@ -21,22 +21,19 @@
             <button class="maximize-btn" onclick="maximizeImage('video2')">⛶</button>
         </div>
     </div>
-
+    <!---Juls--->
     <div class="down_container">
         <div class="sensor_container">
-            <div class="sensors">
-                <h6 id="sen1">Sen 1</h6>
-                <h6 id="sen2">Sen 2</h6>
-                <h6 id="sen3">Sen 3</h6>
-            </div>
-            <div id="logbox" class="logbox">Log box</div>          
+            <div class="sen1" id="objectStatus">Sensors</div>
+            <div class="logbox" id="logbox">Log box</div>          
         </div>
         <div class="fingerprint_container">
-            <div class="indicator_1"></div>
-            <div class="indicator_2"></div>
+            <div class="data-box indicator_1" id="fingerprintStatus">Waiting for fingerprint data...</div><!---FingerPrint--->
+            <input type="text" id="commandInput" placeholder="Type 'E' to register">
+            <button onclick="sendCommand()">Submit</button>
         </div>
     </div>
     <script src="{{ url_for('static', filename='index.js') }}"></script>
+    <script src="{{ url_for('static', filename='esp.js') }}"></script>
 </body>
 </html>
-/* css */
