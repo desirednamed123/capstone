@@ -79,10 +79,10 @@ void SendMessage() {
   delay(200); 
   sim.println("AT+CMGS=\"" + number + "\"\r");  
   delay(200); 
-  String SMS = "Alert: Fcking object detected!!"; //Message For recipient
+  String SMS = "Alert: Object detected!!"; //Message For recipient
   Serial.println("Alert: Sensor trigger sending Message. Sending message to: " + number);
   Serial.println("Sensor trigger sending Message!");
-  //sim.println(SMS); i ccoment ko na to since i pprintline natin sya sa Serial
+  //sim.println(SMS); 
   delay(100); 
   sim.println((char)26);  
   delay(200); 
