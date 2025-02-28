@@ -1,8 +1,8 @@
 #include <WiFi.h>
 #include <WebServer.h>
 
-const char* ssid = "BELARMINO4G";
-const char* password = "DUBUcute234";
+const char* ssid = "running_rat";
+const char* password = "00001111One!";
 
 WebServer server(80);
 String fingerprintStatus = "Waiting for data...";
@@ -78,22 +78,36 @@ void loop() {
 
         Serial.print("Received from Uno: ");
         Serial.println(receivedData);
-
-        if (receivedData.startsWith("Alert:")) {
-            objectStatusMessage = receivedData; 
-        } else if (receivedData == "No object detected.") {
+        
+        // para sa gms_ultrasonic_sensor
+        if (receivedData == "Sensor trigger sending Message!") {
+            objectStatusMessage = "Sensor trigger sending Message!"; 
+        } else if (receivedData == "out of range") {
             objectStatusMessage = "No object detected.";
-        }else if (receivedData == "Sending SMS Alert...") {
-            gsmStatusMessage = "Sending SMS Alert...";
-        }else if (receivedData == "No SMS Alert Sent") { 
-            gsmStatusMessage = "No SMS Alert Sent"; 
-        }else if (receivedData == "SUCCESS: Fingerprint stored") { 
+        }
+        
+        // para sa ma rrecieved text
+        else if (receivedData.startsWith("Alert:")) {
+            gsmStatusMessage = receivedData;
+        }
+        else if (receivedData == "standby to send message") { 
+            gsmStatusMessage = "standby to send message"; 
+        }
+        
+        // para sa Fingerprint status
+        else if (receivedData == "MATCH/Door Opened") { 
+            fingerprintStatus = "MATCH/Door Opened"; 
+        } else if (receivedData == "NO MATCH/Door Closed") {
+            fingerprintStatus = "NO MATCH/Door Closed"; 
+        }
+        
+        // para sa enrollment ng Fingerprint
+        else if (receivedData == "SUCCESS: Fingerprint stored") { 
             fingerprintStatus = "SUCCESS: Fingerprint stored"; 
-        }else if (receivedData == "ERROR: Storing failed") {
+        } else if (receivedData == "ERROR: Storing failed") {
             fingerprintStatus = "ERROR: Storing failed"; 
         }
 
-        
         statusMessage = receivedData;
         Serial.print("Updated status: ");
         Serial.println(statusMessage);

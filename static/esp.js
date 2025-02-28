@@ -1,7 +1,7 @@
 function fetchData() {
     //juls
     // Fetch fingerprint data 
-    fetch('http://192.168.1.93/data')
+    fetch('http://192.168.141.12/data')
         .then(response => response.text())
         .then(data => {
             let fingerprintBox = document.getElementById('fingerprintStatus');
@@ -20,25 +20,25 @@ function fetchData() {
         .catch(error => console.error('Error fetching fingerprint data:', error));
 
     // Fetch sensor object detection data
-    fetch('http://192.168.1.93/object')
+    fetch('http://192.168.141.12/object')
     .then(response => response.text())
     .then(data => {
         let objectBox = document.getElementById('objectStatus');
-        objectBox.innerText = data;
+        objectBox.innerText = data; 
 
             // Reset classes before applying new ones
             objectBox.className = "sen1"; 
             // Change color based on object detection status
             if (data === "No object detected.") {
                 objectBox.classList.add("no-object"); 
-            } else if (data === "Alert: Object detected within 10cm range.") {
+            } else if (data === "Sensor trigger sending Message!") {
                 objectBox.classList.add("object-near");  // Now this should work correctly!
             }
     })
     .catch(error => console.error('Error fetching object data:', error));
 
 
-    fetch('http://192.168.1.93/gsm')
+    fetch('http://192.168.141.12/gsm')
     .then(response => response.text())
     .then(data => {
         let logbox = document.getElementById('logbox');
@@ -46,10 +46,10 @@ function fetchData() {
 
             // Reset classes before applying new ones
             objectBox.className = "logbox"; 
-            if (data === "Sending SMS Alert...") {
-                logbox.innerText = "SMS Alert Sent!";
-            }else if (data === "No alert"){
-                logbox.innerText = "No alert";
+            if (data === "Sensor trigger sending Message sending message to: +639763709707") {
+                logbox.innerText = "asdasd";
+            }else if (data === "standby to send message"){
+                logbox.innerText = "Standby to send message"
             }
     })
     .catch(error => console.error('Error fetching gsm data:', error));
@@ -62,7 +62,7 @@ function fetchData() {
 function sendCommand() {
     let command = document.getElementById("commandInput").value;
     if (command.toUpperCase() === "E") {
-        fetch('http://192.168.1.93/register', { method: 'POST' })
+        fetch('http://192.168.141.12/register', { method: 'POST' })
             .then(response => response.text())
             .then(data => console.log("Command sent: " + data))
             .catch(error => console.error('Error sending command:', error));
